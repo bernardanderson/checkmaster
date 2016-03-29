@@ -1,0 +1,55 @@
+body {
+  box-sizing: border-box;
+}
+
+.dragging {
+  display: inline-block;
+  position: relative;
+  background-color: lightgray;
+  width: auto;
+  cursor: move;
+}
+
+.button-container {
+  display:block; /*make this "none" to make the buttons disappear*/
+  width: auto;
+}
+
+.info-font {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 10pt;
+  padding: 2px;
+  margin: 0 0 0 10px;
+}
+
+.settings-icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 15px;
+  float: right;
+  height: auto;
+  vertical-align: middle;
+  padding: 2px;
+}
+
+.inputter {
+  display: block;
+}
+
+.button-row {
+  display: inline-block;
+  font-size: 9pt;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  padding: 0 2px;
+  margin: 1px 0;
+  width: auto;
+  border: 1px solid black;
+  background-color: #aaaaaa;
+}
+
+.remove-view {
+  display: none;
+}

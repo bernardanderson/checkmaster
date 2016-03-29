@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "CovixMICRU";
+  src: url("../img/CovixMICRU.ttf") format("truetype");
+}
+
+.ttfont {
+  font-family: "CovixMICRU", sans-serif;
+}
+
+.sans {
+  font-family: sans-serif;
+}
