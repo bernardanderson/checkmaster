@@ -1,17 +1,17 @@
 body {
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
 }
 
-.dragging {
+.draggable {
   display: inline-block;
   position: relative;
-  background-color: lightgray;
+  background-color: rgba(0,0,0,0);
   width: auto;
   cursor: move;
 }
 
 .button-container {
-  display:block; /*make this "none" to make the buttons disappear*/
+  display:inline-block; /*make this "none" to make the buttons disappear*/
   width: auto;
 }
 
@@ -35,6 +35,7 @@ body {
 
 .inputter {
   display: block;
+  border: 2px solid gray;
 }
 
 .button-row {
@@ -51,5 +52,9 @@ body {
 }
 
 .remove-view {
-  display: none;
+  visibility: hidden;
+}
+
+.select-object {
+  border: 2px solid red;
 }
