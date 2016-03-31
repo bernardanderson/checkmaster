@@ -5,13 +5,13 @@ var Checkserver = (() => {
   var draggableDivType = { 
     payor: [
     '<div id="payor-address" class="title-container">',
-    '<p class="info-font">Payor Address</p>',
+    '<p class="info-font handle">Payor Address</p>',
     '<div id="payor-setting" class="button-container remove-view">'
     ],
 
     drawee: [
     '<div id="drawee-address" class="title-container">',
-    '<p class="info-font">Drawee Address</p>',
+    '<p class="info-font handle">Drawee Address</p>',
     '<div id="drawee-setting" class="button-container remove-view">'
     ]
 
@@ -27,7 +27,8 @@ var Checkserver = (() => {
         `<div class="draggable">
         ${Checkserver.getDraggableDivType()[sentCategory][0]}
         ${Checkserver.getDraggableDivType()[sentCategory][1]}
-        <img class="settings-icon" src="img/settings.png" alt="">
+        <img class="window-icon delete" src="img/delete.png" alt="">
+        <img class="window-icon settings" src="img/settings.png" alt="">
         </div>
         <textarea class="inputter"></textarea>
         ${Checkserver.getDraggableDivType()[sentCategory][2]}
