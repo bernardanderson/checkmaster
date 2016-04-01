@@ -4,13 +4,13 @@ var Checkserver = (() => {
 
   var draggableDivType = { 
     payor: [
-    '<div id="payor-address" class="title-container">',
+    '<div class="draggable" style="left: 100px;top: 100px;"><div id="payor-address" class="title-container">',
     '<p class="info-font handle">Payor Address</p>',
     '<div id="payor-setting" class="button-container remove-view">'
     ],
 
     drawee: [
-    '<div id="drawee-address" class="title-container">',
+    '<div class="draggable" style="left: 700px;top: 100px;"><div id="drawee-address" class="title-container">',
     '<p class="info-font handle">Drawee Address</p>',
     '<div id="drawee-setting" class="button-container remove-view">'
     ]
@@ -19,12 +19,14 @@ var Checkserver = (() => {
 
   return {
 
+    // Inserts an element to the top of the body child tree
     insertElement: (sentElementBody) => $("body").prepend(sentElementBody),
 
+    // Builds a draggable div textarea element based on the category sent to it
     makeDragDivElement: (sentCategory) => {
 
       let dragInputDiv = 
-        `<div class="draggable">
+        `
         ${Checkserver.getDraggableDivType()[sentCategory][0]}
         ${Checkserver.getDraggableDivType()[sentCategory][1]}
         <img class="window-icon delete" src="img/delete.png" alt="">
@@ -40,9 +42,18 @@ var Checkserver = (() => {
       return dragInputDiv;
     },
 
+    // Allows access to the private array/object "draggableDivType"
     getDraggableDivType: () => draggableDivType,
 
-  };
+    // Isolates and returns selected text
+    getTextSelection: () => {
+      let selectedText = "";
+      if (document.getSelection) {
+        selectedText = document.getSelection().toString();
+      };
 
+      return selectedText;
+    }
+  };
 
 })();
