@@ -32,6 +32,19 @@ var Checkserver = ((domElementLibrary) => {
   domElementLibrary.addDraggableInputLowerTitleToDom = (sentTitle, sentId, sentLocation, sentTextNode, sentSpecialClass) => {
 
     let draggableInputContainer = Checkserver.buildElement("div", sentId, "draggable", {"style": sentLocation}, "");
+    let inputContainerTitleBar = Checkserver.buildInputBar(sentTitle);
+    let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"contenteditable":true}, sentTextNode);
+    let settingsBar = Checkserver.buildSettingsBar();
+
+    draggableInputContainer.appendChild(textArea);
+    draggableInputContainer.appendChild(inputContainerTitleBar);
+    draggableInputContainer.appendChild(settingsBar);
+
+    Checkserver.insertElement(draggableInputContainer);
+  },
+
+// Builds the general input box found on most input field 
+  domElementLibrary.buildInputBar = (sentTitle) => {
 
     let inputContainerTitleBar = Checkserver.buildElement("div", "", "title-container remove-view", "", "");
     let inputContainerTitle = Checkserver.buildElement("p", "", "info-font handle print-remove", "", sentTitle);
@@ -44,8 +57,11 @@ var Checkserver = ((domElementLibrary) => {
     inputContainerTitleBar.appendChild(settingsIcon);
     inputContainerTitleBar.appendChild(infoIcon);
 
-    let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"contenteditable":true}, sentTextNode);
+    return inputContainerTitleBar;
+  },
 
+// Builds the general settings bar found on every input field 
+  domElementLibrary.buildSettingsBar = () => {
     let settingsBar = Checkserver.buildElement("div", "", "button-container remove-view print-remove", "", "");
 
     let settinsBarBtn1 = Checkserver.buildElement("p", "", "button-row font", "", "Font", "");
@@ -56,12 +72,7 @@ var Checkserver = ((domElementLibrary) => {
     settingsBar.appendChild(settinsBarBtn2);
     settingsBar.appendChild(settinsBarBtn3);
 
-    draggableInputContainer.appendChild(textArea);
-    draggableInputContainer.appendChild(inputContainerTitleBar);
-    draggableInputContainer.appendChild(settingsBar);
-
-    Checkserver.insertElement(draggableInputContainer);
-
+    return settingsBar;
   },
 
   // Inserts an element to the top of the body child tree

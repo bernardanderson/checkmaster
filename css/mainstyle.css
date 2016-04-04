@@ -95,6 +95,7 @@ image at the native 8.5x11in width-height*/
 }
 
 .ttfont {
+  /* To access special characters: & or T, - (minus), $, O (oh) */
   font-family: "CovixMICRU", sans-serif;
   font-size: 9pt;
 }
