@@ -46,7 +46,7 @@ var Checkserver = ((domElementLibrary) => {
 // Builds the general input box found on most input field 
   domElementLibrary.buildInputBar = (sentTitle) => {
 
-    let inputContainerTitleBar = Checkserver.buildElement("div", "", "title-container remove-view", "", "");
+    let inputContainerTitleBar = Checkserver.buildElement("div", "", "title-container", "", "");
     let inputContainerTitle = Checkserver.buildElement("p", "", "info-font handle print-remove", "", sentTitle);
     let infoIcon = Checkserver.buildElement("img", "", "window-icon info print-remove", {"src":"img/info.png", "alt":"Info Button"}, "");
     let deleteIcon = Checkserver.buildElement("img", "", "window-icon delete print-remove", {"src":"img/delete.png", "alt":"Delete Button"}, "");
@@ -62,7 +62,7 @@ var Checkserver = ((domElementLibrary) => {
 
 // Builds the general settings bar found on every input field 
   domElementLibrary.buildSettingsBar = () => {
-    let settingsBar = Checkserver.buildElement("div", "", "button-container remove-view print-remove", "", "");
+    let settingsBar = Checkserver.buildElement("div", "", "button-container print-remove", "", "");
 
     let settinsBarBtn1 = Checkserver.buildElement("p", "", "button-row font", "", "Font", "");
     let settinsBarBtn2 = Checkserver.buildElement("p", "", "button-row font-size", "", "Font Size", "");
@@ -75,7 +75,7 @@ var Checkserver = ((domElementLibrary) => {
     return settingsBar;
   },
 
-  // Inserts an element to the top of the body child tree
+// Inserts an element to the top of the body child tree
   domElementLibrary.insertElement = (sentElementBody) => $("body").prepend(sentElementBody)
 
   return domElementLibrary;

@@ -6,13 +6,15 @@ var Checkserver = (() => {
 //  key: ["Title of Container", "ID", "size in the form "left: #unit; top: #unit;", "Special Text Inside container", "Special Class"]
   var elementParams = { 
     payor: ["Payor Address", "payor-address", "left: 0.9375in; top: 0.375in;", "Joe Anonymous\n1143 East West Rd\nWhoville, TN 33124", ""],
-    // bank: ["1st National Bank", "bank-name", "left: 2in; top: 0.5in;"],
-    // payee: ["Pay to the Order Of", "payee-name", "left: 2in; top: 0.5in;"],
-    // date: ["Date", "date-line", "left: 2in; top: 0.5in;"],
-    // payment: ["Dollars", "written-amount", "left: 2in; top: 0.5in;"],
-    // memo: ["MEMO", "memo-line", "left: 2in; top: 0.5in;"],
-    // sig: ["AUTHORIZED SIGNATURE", "sig-line", "left: 2in; top: 0.5in;"],
-    mirc: ["MIRC Routing and Bank Code", "routing-number", "left: 1.40625in; top: 3.125in;", "O000000O T000000000T 0000000000O", " ttfont"]
+    bank: ["Bank Info", "bank-name", "left: 4.79in; top: 0.40in;", "1st Bank of\nCuccooTown", ""],
+    payee: ["Payee Info", "payee-name", "left: 0.37in; top: 1.28in;", "Pay To The\nOrder Of ___________________________________________________________________________ $ __________", ""],
+    checknum: ["Check Number", "check-num", "left: 7.0in; top: 0.33in;", "No. 1000", ""],
+    date: ["Date of Check", "date-line", "left: 6.0in; top: 0.83in;", "Date ______________", ""],
+    payment: ["Written Payment", "written-amount", "left: 0.39in; top: 1.73in;", "________________________________________________________________________________________ Dollars", ""],
+    memo: ["Memo Line", "memo-line", "left: 0.41in; top: 2.64in;", "MEMO _________________________", ""],
+    sig: ["Signature Line", "sig-line", "left: 5.49in; top: 2.34in;", "____________________________\nAUTHORIZED SIGNATURE", ""],
+    bnkfrac: ["Fractional Bank Number", "bnk-frac", "left: 7.45in; top: 0.56in;", "123-123/123", ""],
+    mirc: ["MIRC Check, Routing and Account Numbers", "routing-number", "left: 1.40625in; top: 3.125in;", "O000000O T000000000T 0000000000O", " ttfont"]
   };
 
   return {
