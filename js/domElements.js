@@ -2,48 +2,23 @@
 
 var Checkserver = (() => {
 
-  var draggableDivType = { 
-    payor: [
-    '<div class="draggable" style="left: 100px;top: 100px;"><div id="payor-address" class="title-container">',
-    '<p class="info-font handle">Payor Address</p>',
-    '<div id="payor-setting" class="button-container remove-view">'
-    ],
-
-    drawee: [
-    '<div class="draggable" style="left: 700px;top: 100px;"><div id="drawee-address" class="title-container">',
-    '<p class="info-font handle">Drawee Address</p>',
-    '<div id="drawee-setting" class="button-container remove-view">'
-    ]
-
-  }
+// This is the list of elements to be built.  They should be in the form:
+//  key: ["Title of Container", "ID", "size in the form "left: #unit; top: #unit;", "Special Text Inside container", "Special Class"]
+  var elementParams = { 
+    payor: ["Payor Address", "payor-address", "left: 0.9375in; top: 0.375in;", "Joe Anonymous\n1143 East West Rd\nWhoville, TN 33124", ""],
+    // bank: ["1st National Bank", "bank-name", "left: 2in; top: 0.5in;"],
+    // payee: ["Pay to the Order Of", "payee-name", "left: 2in; top: 0.5in;"],
+    // date: ["Date", "date-line", "left: 2in; top: 0.5in;"],
+    // payment: ["Dollars", "written-amount", "left: 2in; top: 0.5in;"],
+    // memo: ["MEMO", "memo-line", "left: 2in; top: 0.5in;"],
+    // sig: ["AUTHORIZED SIGNATURE", "sig-line", "left: 2in; top: 0.5in;"],
+    mirc: ["MIRC Routing and Bank Code", "routing-number", "left: 1.40625in; top: 3.125in;", "O000000O T000000000T 0000000000O", " ttfont"]
+  };
 
   return {
 
-    // Inserts an element to the top of the body child tree
-    insertElement: (sentElementBody) => $("body").prepend(sentElementBody),
-
-    // Builds a draggable div textarea element based on the category sent to it
-    makeDragDivElement: (sentCategory) => {
-
-      let dragInputDiv = 
-        `
-        ${Checkserver.getDraggableDivType()[sentCategory][0]}
-        ${Checkserver.getDraggableDivType()[sentCategory][1]}
-        <img class="window-icon delete" src="img/delete.png" alt="">
-        <img class="window-icon settings" src="img/settings.png" alt="">
-        </div>
-        <textarea class="inputter"></textarea>
-        ${Checkserver.getDraggableDivType()[sentCategory][2]}
-        <p class="button-row font">Font</p>
-        <p class="button-row font-size">Font Size</p>
-        <p class="button-row justification">Justification</p>
-        </div></div>`
-
-      return dragInputDiv;
-    },
-
     // Allows access to the private array/object "draggableDivType"
-    getDraggableDivType: () => draggableDivType,
+    getElementParams: () => elementParams,
 
     // Isolates and returns selected text
     getTextSelection: () => {

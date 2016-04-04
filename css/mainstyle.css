@@ -1,7 +1,19 @@
 body {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
+/*For the blank check background image, in order to have it print correctly you need to have the
+image at the native 8.5x11in width-height*/
+#blank-checks {
+  width: 8.5in;
+  height: 11in;
+  padding: 0;
+  margin: 0;
+}
+
+/*Styles the complete movable div input element*/
 .draggable {
   display: inline-block;
   position: absolute;
@@ -10,11 +22,13 @@ body {
   width: auto;
 }
 
+/*This styles the container holding the settings buttons that is initally hidden*/
 .button-container {
-  display:inline-block; /*make this "none" to make the buttons disappear*/
+  display: inline-block; /*make this "none" to make the buttons disappear*/
   width: auto;
 }
 
+/*Styles the title font for the complete movable div input element*/
 .info-font {
   display: inline-block;
   vertical-align: middle;
@@ -27,24 +41,30 @@ body {
   cursor: move;
 }
 
+/*Styles any icon in the complete movable div input element*/
 .window-icon {
-  display: inline-block;
-  width: 15px;
+  display: block;
+  width: 13px;
   float: right;
   height: auto;
   vertical-align: middle;
   padding: 2px;
 }
 
-.delete, .settings {
+.delete, .settings, .info {
   cursor: pointer;
 }
 
+/*Styles the editable text input boxes */
 .inputter {
   display: block;
+  min-width: 0.1in;
+  background-color: transparent;
   border: 2px solid gray;
+  white-space: pre-wrap
 }
 
+/*Bulk styles the buttons shown from the holding the settings buttons that is initally hidden*/
 .button-row {
   display: inline-block;
   font-size: 9pt;
@@ -65,3 +85,42 @@ body {
 .select-object {
   border: 2px solid red;
 }
+
+/*------------*/
+/*START OF - CSS Styling for the MICRU Truetype font*/
+/*------------*/
+@font-face {
+  font-family: "CovixMICRU";
+  src: url("../img/CovixMICRU.ttf") format("truetype");
+}
+
+.ttfont {
+  font-family: "CovixMICRU", sans-serif;
+  font-size: 9pt;
+}
+/*------------*/
+/*END OF - CSS Styling for the MICRU Truetype font*/
+/*------------*/
+
+/*------------*/
+/*START OF - Print Styling
+   Style your elements so that when you print, you only see the text that you entered, none of the menu styling is shown*/
+/*------------*/
+@media print { 
+
+  .draggable {
+    background-color: transparent;
+  }
+
+  .inputter {
+    border: none;
+    resize: none;
+  }
+
+  .print-remove {
+    visibility: hidden;
+  }
+}
+/*------------*/
+/*END OF - Print Styling*/
+/*------------*/
