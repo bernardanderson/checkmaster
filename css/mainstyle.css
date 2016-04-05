@@ -58,11 +58,12 @@ image at the native 8.5x11in width-height*/
   white-space: pre-wrap;
 }
 
+/* Styles the blank input areas for parts of the template that have a text label*/
 .blank-inputter {
   position: absolute;
-  min-width: 100px;
   background-color: rgba(255,255,224, 0.6);
-  white-space: pre-wrap;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /*This styles the container holding the settings buttons that is initally hidden*/
@@ -153,9 +154,15 @@ image at the native 8.5x11in width-height*/
   #content-area {
     padding: 0;
   }
+
   .print-remove {
     visibility: hidden;
   }
+
+  .blank-inputter {
+    background-color: transparent;
+  }
+
 }
 /*------------*/
 /*END OF - Print Styling*/

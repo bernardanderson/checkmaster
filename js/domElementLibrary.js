@@ -39,11 +39,14 @@ var Checkserver = ((domElementLibrary) => {
     if (sentLocation.length === 3) {
       let editableTextArea2 = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentLocation[2]}, "");
       textArea.appendChild(editableTextArea2);
+      textArea.appendChild(editableTextArea);
+      draggableInputContainer.appendChild(inputContainerTitleBar);
+      draggableInputContainer.appendChild(textArea);
+    } else {
+      textArea.appendChild(editableTextArea);
+      draggableInputContainer.appendChild(textArea);
+      draggableInputContainer.appendChild(inputContainerTitleBar);
     };
-
-    textArea.appendChild(editableTextArea);
-    draggableInputContainer.appendChild(textArea);
-    draggableInputContainer.appendChild(inputContainerTitleBar);
 
     Checkserver.insertElementToCheckArea(draggableInputContainer);
   },
@@ -56,12 +59,17 @@ var Checkserver = ((domElementLibrary) => {
     let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentTitle);
     let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"contenteditable":true}, sentTextNode);
 
-    draggableInputContainer.appendChild(textArea);
-    draggableInputContainer.appendChild(inputContainerTitleBar);
+    if (sentId === "check-num") {
+      draggableInputContainer.appendChild(inputContainerTitleBar);
+      draggableInputContainer.appendChild(textArea);
+    } else  {
+      draggableInputContainer.appendChild(textArea);
+      draggableInputContainer.appendChild(inputContainerTitleBar);
+    };
 
     Checkserver.insertElementToCheckArea(draggableInputContainer);
   },
-
+  
 // Builds a less intrusive title bar with icons found on most input field 
   domElementLibrary.buildInputTitleBar = (sentTitle) => {
 
@@ -73,21 +81,6 @@ var Checkserver = ((domElementLibrary) => {
     inputContainerTitleBar.appendChild(infoIcon);
 
     return inputContainerTitleBar;
-  },
-
-// Builds the general settings bar found on most input field 
-  domElementLibrary.buildSettingsBar = () => {
-    let settingsBar = Checkserver.buildElement("div", "", "button-container print-remove", "", "");
-
-    let settinsBarBtn1 = Checkserver.buildElement("p", "", "button-row font", "", "Font", "");
-    let settinsBarBtn2 = Checkserver.buildElement("p", "", "button-row font-size", "", "Font Size", "");
-    let settinsBarBtn3 = Checkserver.buildElement("p", "", "button-row justification", "", "Justification", "");
-
-    settingsBar.appendChild(settinsBarBtn1);
-    settingsBar.appendChild(settinsBarBtn2);
-    settingsBar.appendChild(settinsBarBtn3);
-
-    return settingsBar;
   },
 
 // Inserts an element to the top of the body child tree
