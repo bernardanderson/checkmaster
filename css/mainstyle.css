@@ -50,24 +50,35 @@ image at the native 8.5x11in width-height*/
   width: auto;
 }
 
-/*This darkens the main, draggable div on mouseover*/
-.make-darker {
-  background-color: rgb(255,248,202);
-  border: 1px solid gray;
+/*Styles the editable text input boxes */
+.inputter {
+  display: inline-block;
+  min-width: 0.1in;
+  background-color: transparent;
+  white-space: pre-wrap;
+}
+
+.blank-inputter {
+  position: absolute;
+  min-width: 100px;
+  background-color: rgba(255,255,224, 0.6);
+  white-space: pre-wrap;
 }
 
 /*This styles the container holding the settings buttons that is initally hidden*/
 .button-container, .title-container {
-  display: none; /*make this "none" to make the buttons disappear*/
+  display: block; 
   width: auto;
+  text-align: center;
+  visibility: hidden;
 }
 
 /*Styles the title font for the complete movable div input element*/
 .info-font {
   display: inline-block;
-  font-size: 10pt;
-  padding: 2px;
-  margin: 0 0 0 10px;
+  font-size: 8pt;
+  padding: 0;
+  margin: 0 auto;
 }
 
 /*Make the designated handles for the movable boxes have the move hand*/
@@ -78,20 +89,11 @@ image at the native 8.5x11in width-height*/
 /*Styles any icon in the complete movable div input element*/
 .window-icon {
   display: inline-block;
-  width: 13px;
+  width: 10px;
   vertical-align: bottom;
-  float: right;
   height: auto;
   padding: 2px;
   cursor: pointer;
-}
-
-/*Styles the editable text input boxes */
-.inputter {
-  display: block;
-  min-width: 0.1in;
-  background-color: transparent;
-  white-space: pre-wrap
 }
 
 /*Bulk styles the buttons shown from the holding the settings buttons that is initally hidden*/
@@ -110,23 +112,7 @@ image at the native 8.5x11in width-height*/
 
 /*Styles hidden objects that have a temporary display from something like a mouseover */
 .show-view {
-  display: block;
-}
-
-/*Styles hidden objects to have a permanant display from something like settings click */
-.make-view-perm {
-  display: block;
-}
-
-/*Styles hidden objects to have a permanant background color */
-.make-darker-perm {
-  background-color: rgb(255,248,202);
-  border: 1px solid gray;
-}
-
-/*Gives objects a thin red border*/
-.select-object {
-  border: 1px solid red;
+  visibility: visible;
 }
 
 /*------------*/

@@ -29,38 +29,53 @@ var Checkserver = ((domElementLibrary) => {
 
 // This builds a complete movable, text entry box.  It accepts a Title, an ID a starting location (in the form "left: #unit; top: #unit;"
 //  and what text you want insidefor where it is on the DOM.  A special class can be added for those items that have special font needs
-  domElementLibrary.addDraggableInputLowerTitleToDom = (sentTitle, sentId, sentLocation, sentTextNode, sentSpecialClass) => {
+  domElementLibrary.addDraggableContentInputToDom = (sentTitle, sentId, sentLocation, sentTextNode, sentSpecialClass) => {
 
-    let draggableInputContainer = Checkserver.buildElement("div", sentId, "draggable", {"style": sentLocation}, "");
-    let inputContainerTitleBar = Checkserver.buildInputBar(sentTitle);
-    let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"contenteditable":true}, sentTextNode);
-    let settingsBar = Checkserver.buildSettingsBar();
+    let draggableInputContainer = Checkserver.buildElement("div", sentId, "draggable", {"style": sentLocation[0]}, "");
+    let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentTitle);
+    let editableTextArea = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentLocation[1]}, "");
+    let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"style": sentLocation[0]}, sentTextNode);
+    
+    if (sentLocation.length === 3) {
+      let editableTextArea2 = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentLocation[2]}, "");
+      textArea.appendChild(editableTextArea2);
+    };
 
+    textArea.appendChild(editableTextArea);
     draggableInputContainer.appendChild(textArea);
     draggableInputContainer.appendChild(inputContainerTitleBar);
-    draggableInputContainer.appendChild(settingsBar);
 
     Checkserver.insertElementToCheckArea(draggableInputContainer);
   },
 
-// Builds the general input box found on most input field 
-  domElementLibrary.buildInputBar = (sentTitle) => {
+// This builds a complete movable, text entry box.  It accepts a Title, an ID a starting location (in the form "left: #unit; top: #unit;"
+//  and what text you want insidefor where it is on the DOM.  A special class can be added for those items that have special font needs
+  domElementLibrary.addDraggableBlankInputToDom = (sentTitle, sentId, sentLocation, sentTextNode, sentSpecialClass) => {
+
+    let draggableInputContainer = Checkserver.buildElement("div", sentId, "draggable", {"style": sentLocation}, "");
+    let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentTitle);
+    let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"contenteditable":true}, sentTextNode);
+
+    draggableInputContainer.appendChild(textArea);
+    draggableInputContainer.appendChild(inputContainerTitleBar);
+
+    Checkserver.insertElementToCheckArea(draggableInputContainer);
+  },
+
+// Builds a less intrusive title bar with icons found on most input field 
+  domElementLibrary.buildInputTitleBar = (sentTitle) => {
 
     let inputContainerTitleBar = Checkserver.buildElement("div", "", "title-container", "", "");
     let inputContainerTitle = Checkserver.buildElement("p", "", "info-font handle print-remove", "", sentTitle);
-    let infoIcon = Checkserver.buildElement("img", "", "window-icon info print-remove", {"src":"img/info.png", "alt":"Info Button"}, "");
-    let deleteIcon = Checkserver.buildElement("img", "", "window-icon delete print-remove", {"src":"img/delete.png", "alt":"Delete Button"}, "");
-    let settingsIcon = Checkserver.buildElement("img", "", "window-icon settings print-remove", {"src":"img/settings.png", "alt":"Settings Button"}, "");
+    let infoIcon = Checkserver.buildElement("img", "", "window-icon print-remove", {"src":"img/info.png", "alt":"Info Button"}, "");
 
     inputContainerTitleBar.appendChild(inputContainerTitle);
-    inputContainerTitleBar.appendChild(deleteIcon);
-    inputContainerTitleBar.appendChild(settingsIcon);
     inputContainerTitleBar.appendChild(infoIcon);
 
     return inputContainerTitleBar;
   },
 
-// Builds the general settings bar found on every input field 
+// Builds the general settings bar found on most input field 
   domElementLibrary.buildSettingsBar = () => {
     let settingsBar = Checkserver.buildElement("div", "", "button-container print-remove", "", "");
 
