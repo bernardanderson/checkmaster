@@ -40,7 +40,7 @@ var Checkserver = ((domElementLibrary) => {
     draggableInputContainer.appendChild(inputContainerTitleBar);
     draggableInputContainer.appendChild(settingsBar);
 
-    Checkserver.insertElement(draggableInputContainer);
+    Checkserver.insertElementToCheckArea(draggableInputContainer);
   },
 
 // Builds the general input box found on most input field 
@@ -76,7 +76,7 @@ var Checkserver = ((domElementLibrary) => {
   },
 
 // Inserts an element to the top of the body child tree
-  domElementLibrary.insertElement = (sentElementBody) => $("body").prepend(sentElementBody)
+  domElementLibrary.insertElementToCheckArea = (sentElementBody) => $("#check-area").prepend(sentElementBody)
 
   return domElementLibrary;
 

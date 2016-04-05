@@ -4,6 +4,35 @@ body {
   margin: 0;
 }
 
+/**/
+/*START OF - Styling needed for the navbar*/
+/**/
+/*Styles the navbar header so it is fixed to the top and is static */
+#nav-holder {
+  display: block;
+  width: 100%;
+  position: fixed;
+  padding: 0.1in;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.80);
+  border-bottom: 1px solid black;
+}
+
+/*Shifts the section element holding the non-navbar info down so it's not covered by the nav*/
+#content-area {
+  padding: 0.40in 0 0 0;
+}
+
+/*Makes the positioning of the check-holding div relative so the fixed elements within don't get
+shifted by the fix navbar at the top*/
+#check-area {
+  position: relative;
+}
+
+/**/
+/*END OF - Styling needed for the navbar*/
+/**/
+
 /*For the blank check background image, in order to have it print correctly you need to have the
 image at the native 8.5x11in width-height*/
 #blank-checks {
@@ -98,9 +127,6 @@ image at the native 8.5x11in width-height*/
 /*Gives objects a thin red border*/
 .select-object {
   border: 1px solid red;
-  position: absolute;
-  left: 4in;
-  top: 4in;
 }
 
 /*------------*/
@@ -132,9 +158,15 @@ image at the native 8.5x11in width-height*/
 
   .inputter {
     border: none;
-    resize: none;
   }
 
+  #nav-holder {
+    display: none;
+  }
+
+  #content-area {
+    padding: 0;
+  }
   .print-remove {
     visibility: hidden;
   }
