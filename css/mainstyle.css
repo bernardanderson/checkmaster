@@ -32,6 +32,8 @@ shifted by the fix navbar at the top*/
   position: relative;
   width: 8.5in;
   height: 11in;
+  background: url(../img/blankchecks.jpg);
+  background-size: 8.5in 11in;
 }
 
 /**/
@@ -85,6 +87,14 @@ image at the native 8.5x11in width-height*/
   min-width: 0.1in;
   background-color: transparent;
   white-space: pre-wrap;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+/*Turns off selecting of the title/info container*/
+.title-container {
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Styles the blank input areas for parts of the template that have a text label*/

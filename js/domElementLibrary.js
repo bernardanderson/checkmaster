@@ -32,21 +32,21 @@ var Checkserver = ((domElementLibrary) => {
     for (let i = 2; i <= sentNumberOfChecks; i++) {
       let newSingleCheckDiv = Checkserver.buildElement("div", `check-${i}`, "", "", "");
       newSingleCheckDiv.innerHTML = $("#check-1").html();
-      $("#check-area").prepend(newSingleCheckDiv);
+      $("#check-area").append(newSingleCheckDiv);
     }
   },
 
 // This builds a complete movable, text entry box.  It accepts a Title, an ID a starting location (in the form "left: #unit; top: #unit;"
 //  and what text you want insidefor where it is on the DOM.  A special class can be added for those items that have special font needs
-  domElementLibrary.addDraggableContentInputToDom = (sentTitle, sentId, sentLocation, sentTextNode, sentSpecialClass) => {
+  domElementLibrary.addDraggableContentInputToDom = (sentElementObj) => {
 
-    let draggableInputContainer = Checkserver.buildElement("div", sentId, "draggable", {"style": sentLocation[0]}, "");
-    let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentTitle);
-    let editableTextArea = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentLocation[1]}, "");
-    let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"style": sentLocation[0]}, sentTextNode);
+    let draggableInputContainer = Checkserver.buildElement("div", sentElementObj.id, "draggable", {"style": sentElementObj.position[0]}, "");
+    let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentElementObj.containerTitle);
+    let editableTextArea = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentElementObj.position[1]}, "");
+    let textArea = Checkserver.buildElement("div", "", `inputter${sentElementObj.specialClass}`, {"style": sentElementObj.position[0]}, sentElementObj.internalText);
     
-    if (sentLocation.length === 3) {
-      let editableTextArea2 = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentLocation[2]}, "");
+    if (sentElementObj.position.length === 3) {
+      let editableTextArea2 = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentElementObj.position[2]}, "");
       textArea.appendChild(editableTextArea2);
       textArea.appendChild(editableTextArea);
       draggableInputContainer.appendChild(inputContainerTitleBar);
@@ -62,13 +62,13 @@ var Checkserver = ((domElementLibrary) => {
 
 // This builds a complete movable, text entry box.  It accepts a Title, an ID a starting location (in the form "left: #unit; top: #unit;"
 //  and what text you want insidefor where it is on the DOM.  A special class can be added for those items that have special font needs
-  domElementLibrary.addDraggableBlankInputToDom = (sentTitle, sentId, sentLocation, sentTextNode, sentSpecialClass) => {
+  domElementLibrary.addDraggableBlankInputToDom = (sentElementObj) => {
 
-    let draggableInputContainer = Checkserver.buildElement("div", sentId, "draggable", {"style": sentLocation}, "");
-    let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentTitle);
-    let textArea = Checkserver.buildElement("div", "", `inputter${sentSpecialClass}`, {"contenteditable":true}, sentTextNode);
+    let draggableInputContainer = Checkserver.buildElement("div", sentElementObj.id, "draggable", {"style": sentElementObj.position}, "");
+    let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentElementObj.containerTitle);
+    let textArea = Checkserver.buildElement("div", "", `inputter${sentElementObj.specialClass}`, {"contenteditable":true}, sentElementObj.internalText);
 
-    if (sentId === "check-num") {
+    if (sentElementObj.id === "check-num") {
       draggableInputContainer.appendChild(inputContainerTitleBar);
       draggableInputContainer.appendChild(textArea);
     } else  {
