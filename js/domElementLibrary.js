@@ -10,8 +10,8 @@ var Checkserver = ((domElementLibrary) => {
 
     let newElement = document.createElement(sentElementType);
     
-    newElement.id = (sentId === "") ? "" : sentId;
-    newElement.className = (sentClasses === "") ? "" : sentClasses;
+    if (sentId !== "") newElement.id = sentId;
+    if (sentClasses !== "") newElement.className = sentClasses;
 
     if (sentAttributes !== "") {
       for (var key in sentAttributes) {
@@ -25,6 +25,15 @@ var Checkserver = ((domElementLibrary) => {
     };
 
     return newElement;
+  },
+
+  domElementLibrary.buildAdditionalCheckDivs = (sentNumberOfChecks) => {
+
+    for (let i = 2; i <= sentNumberOfChecks; i++) {
+      let newSingleCheckDiv = Checkserver.buildElement("div", `check-${i}`, "", "", "");
+      newSingleCheckDiv.innerHTML = $("#check-1").html();
+      $("#check-area").prepend(newSingleCheckDiv);
+    }
   },
 
 // This builds a complete movable, text entry box.  It accepts a Title, an ID a starting location (in the form "left: #unit; top: #unit;"
@@ -75,7 +84,7 @@ var Checkserver = ((domElementLibrary) => {
 
     let inputContainerTitleBar = Checkserver.buildElement("div", "", "title-container", "", "");
     let inputContainerTitle = Checkserver.buildElement("p", "", "info-font handle print-remove", "", sentTitle);
-    let infoIcon = Checkserver.buildElement("img", "", "window-icon print-remove", {"src":"img/info.png", "alt":"Info Button"}, "");
+    let infoIcon = Checkserver.buildElement("img", "", "window-icon settings print-remove", {"src":"img/settings.png", "alt":"Settings Button"}, "");
 
     inputContainerTitleBar.appendChild(inputContainerTitle);
     inputContainerTitleBar.appendChild(infoIcon);
@@ -84,7 +93,7 @@ var Checkserver = ((domElementLibrary) => {
   },
 
 // Inserts an element to the top of the body child tree
-  domElementLibrary.insertElementToCheckArea = (sentElementBody) => $("#check-area").prepend(sentElementBody)
+  domElementLibrary.insertElementToCheckArea = (sentElementBody) => $("#check-1").prepend(sentElementBody)
 
   return domElementLibrary;
 

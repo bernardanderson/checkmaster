@@ -7,8 +7,8 @@ var Checkserver = (() => {
   var elementParams = { 
     bank: {blankInput: ["Bank Info", "bank-name", "left: 4.79in; top: 0.40in;", "1st Bank of\nCuccooTown", ""]},
     checknum: {blankInput: ["Check Number", "check-num", "left: 7.0in; top: 0.12in;", "No. 1000", ""]},
-    bnkfrac: {blankInput: ["Fractional Bank Number", "bnk-frac", "left: 7.45in; top: 0.56in;", "123-123/123", ""]},
-    mirc: {blankInput: ["MIRC Check, Routing and Account Numbers", "routing-number", "left: 1.40625in; top: 3.125in;", "O000000O T000000000T 0000000000O", " ttfont"]},
+    bnkfrac: {blankInput: ["Frac Bnk #", "bnk-frac", "left: 7.45in; top: 0.56in;", "123-123/123", ""]},
+    mirc: {blankInput: ["MIRC Check, Routing and Account Numbers", "routing-number", "left: 1.40625in; top: 3.120in;", "O000000O T000000000T 0000000000O", " ttfont"]},
     payor: {blankInput: ["Payor Address", "payor-address", "left: 0.9375in; top: 0.375in;", "Joe Anonymous\n1143 East West Rd\nWhoville, TN 33124", ""]},
     date: {contentInput: ["Date of Check", "date-line", ["left: 6.0in; top: 0.83in;", "left: 0.40in; bottom: 0.25in; width: 1.1in;"], "Date ______________", ""]},
     memo: {contentInput: ["Memo Line", "memo-line", ["left: 0.41in; top: 2.64in;", "left: 0.65in; bottom: 0.25in; width: 1.9in;"], "MEMO _________________________", ""]},

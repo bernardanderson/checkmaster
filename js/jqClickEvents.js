@@ -3,18 +3,13 @@ $(() => {
   // Makes items with the "draggable" class draggable
   $(".draggable").draggable( { handle: ".handle" }  );
   
-  // Sets a click event on any .draggable item. Checks for clicks on the settings icon (toggles
-  //  the settings menu visibility) and the delete icon (deletes the .draggable container)
-  // $(".draggable").click( (event) => { 
-  //   event.stopPropagation();
-  //   if (event.target.className.includes("settings")) {
-  //     $(event.currentTarget).children(".button-container").toggleClass("make-view-perm");
-  //     $(event.currentTarget).children(".title-container").toggleClass("make-view-perm");
-  //     $(event.currentTarget).toggleClass("select-object").toggleClass("make-darker-perm");
-  //   } else if (event.target.className.includes("delete")) {
-  //     $(event.currentTarget).remove();
-  //   };
-  // });
+  // Sets a click event on any .draggable item. Checks for clicks on the settings icon
+  $(".draggable").click( (event) => { 
+    event.stopPropagation();
+    if (event.target.className.includes("settings")) {
+      $("#nav-content").html(event.currentTarget.id);
+    };
+  });
 
   // Sets an event on any .draggable element that shows the title & settings icons
   $(".draggable").bind("mouseover", (event) => {
