@@ -2,28 +2,53 @@
 
 var Checkserver = (() => {
 
+// This is the list of elements to be built.  They should be in the form:
+//  key: inputtype: ["Title of Container", "ID", "size in the form "left: #unit; top: #unit;", "Special Text Inside container", "Special Class"]
+  let remoteElementParams;
+
   return {
 
-    insertElement: (sentElement) => { 
-      $("body").prepend(sentElement);
+    xhrElementPullAndParse: () => {
+      let checkElements = new XMLHttpRequest();
+      checkElements.addEventListener("load", Checkserver.parseJsonElements);
+      checkElements.open("GET", "json/elements.json");
+      checkElements.send();
     },
 
-    makeDragDiv: () => {
-      let dragInputDiv = `<div id="" class="draggable dragging">
-      <div class="title-container">
-      <p class="info-font">User Address</p>
-      <img id="settings" class="settings-icon" src="img/settings.png" alt="">
-      </div>
-      <textarea id="user-address" class="inputter"></textarea>
-      <div id="btn-container" class="button-container remove-view">
-      <p class="button-row">Font</p>
-      <p class="button-row">Font Size</p>
-      </div></div>`
-      return dragInputDiv;
+    parseJsonElements: (event) => {
+      remoteElementParams = JSON.parse( event.target.responseText ).domElements;
+      Checkserver.buildChecks();
+    },
+
+    buildChecks: () => {
+      for (let keys in Checkserver.getElementParams()) {
+        
+        let currentElementObject = Checkserver.getElementParams()[keys];
+        
+        if (currentElementObject.inputType === "blankInput") {
+            Checkserver.addDraggableBlankInputToDom(currentElementObject);
+        } else if (currentElementObject.inputType === "contentInput") {
+            Checkserver.addDraggableContentInputToDom(currentElementObject);
+        };
+      };
+
+      Checkserver.addAllClickEvents();
+
+    },
+
+    // Allows access to the private array/object "draggableDivType"
+    // getElementParams: () => elementParams,
+    getElementParams: () => remoteElementParams,
+
+    // Isolates and returns selected text
+    getTextSelection: () => {
+      let selectedText = "";
+      if (document.getSelection) {
+        selectedText = document.getSelection().toString();
+      };
+
+      return selectedText;
     }
-
-
   };
-
 
 })();
