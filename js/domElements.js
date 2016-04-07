@@ -31,6 +31,9 @@ var Checkserver = (() => {
             Checkserver.addDraggableContentInputToDom(currentElementObject);
         };
       };
+
+      Checkserver.addAllClickEvents();
+
     },
 
     // Allows access to the private array/object "draggableDivType"
