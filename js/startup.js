@@ -7,7 +7,7 @@
 $(document).ready( () => {
   
   Checkserver.setNumberOfChecks(3);
-  Checkserver.setCurrentCheckNumber(1000);
+  Checkserver.setCurrentCheckNumber(1001);
 
   Checkserver.xhrElementPullAndParse();
 

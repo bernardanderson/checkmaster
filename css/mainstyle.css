@@ -71,7 +71,14 @@ image at the native 8.5x11in width-height*/
   width: 8.5in;
   height: 3.5in;
 }
+
+/*Targets the .inputter div's that have a parent div with ID that starts with "bnk-frac"*/
+div[id^="bnk-frac"] > .inputter {
+  font-size: 7pt;
+}
 /**//**/
+
+
 
 /*Styles the complete movable div input element*/
 .draggable {

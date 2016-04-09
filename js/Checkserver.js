@@ -44,21 +44,35 @@ var Checkserver = (() => {
 
 
       Checkserver.copyChecksToDivs(numberOfChecks);
-      
-      Checkserver.updateElementsIds();
+
+      Checkserver.updateCheckNumbers();
+
+      Checkserver.updateElementIDsClasses();
 
       Checkserver.addAllClickEvents();
 
     },
 
+    // This changes the check number for the current list of checks and updates both the check number
+    //  in the upper right but also the MICR check number.
+    updateCheckNumbers: () => {
+        
+      $("#check-num .inputter").each( function() {
+        let thisCheckNumber = Checkserver.getCurrentCheckNumber()
+        $(this).html("No. " + thisCheckNumber);
+
+        let newMICRCheckNumber = "O" + "0".repeat(6-thisCheckNumber.toString().length)+thisCheckNumber+"O";
+
+        let newMICRString = newMICRCheckNumber + $(".ttfont").html().slice(8);
+
+        $(this).parent().siblings("[id*='routing-number']").children(".ttfont").html(newMICRString);
+      });
+    },
+
     // Once a check element is added to the DOM, the func goes into each check and adds to each top
     //  level child and check container ID as a class and appends the digit of the check container
     //  to the ID of the first child.
-    updateElementsIds: () => {
-
-      $("#check-num .inputter").each( function() {
-        $(this).html("No. " + Checkserver.getCurrentCheckNumber());
-      });
+    updateElementIDsClasses: () => {
 
       $("#check-area").children().children().each( function() {
 
