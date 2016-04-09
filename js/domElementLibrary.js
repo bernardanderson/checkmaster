@@ -27,11 +27,10 @@ var Checkserver = ((domElementLibrary) => {
     return newElement;
   },
 
-  domElementLibrary.buildAdditionalCheckDivs = (sentNumberOfChecks) => {
+  domElementLibrary.buildCheckDivs = (sentNumberOfChecks) => {
 
-    for (let i = 2; i <= sentNumberOfChecks; i++) {
+    for (let i = 1; i <= sentNumberOfChecks; i++) {
       let newSingleCheckDiv = Checkserver.buildElement("div", `check-${i}`, "", "", "");
-      newSingleCheckDiv.innerHTML = $("#check-1").html();
       $("#check-area").append(newSingleCheckDiv);
     }
   },
@@ -42,19 +41,16 @@ var Checkserver = ((domElementLibrary) => {
 
     let draggableInputContainer = Checkserver.buildElement("div", sentElementObj.id, "draggable", {"style": sentElementObj.position[0]}, "");
     let inputContainerTitleBar = Checkserver.buildInputTitleBar(sentElementObj.containerTitle);
-    let editableTextArea = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentElementObj.position[1]}, "");
+    let editableTextArea = Checkserver.buildElement("div", "", "blank-inputter input-1", {"contenteditable":true, "style": sentElementObj.position[1]}, "");
     let textArea = Checkserver.buildElement("div", "", `inputter${sentElementObj.specialClass}`, {"style": sentElementObj.position[0]}, sentElementObj.internalText);
     
     if (sentElementObj.position.length === 3) {
-      let editableTextArea2 = Checkserver.buildElement("div", "", "blank-inputter", {"contenteditable":true, "style": sentElementObj.position[2]}, "");
-      textArea.appendChild(editableTextArea2);
-      textArea.appendChild(editableTextArea);
-      draggableInputContainer.appendChild(inputContainerTitleBar);
-      draggableInputContainer.appendChild(textArea);
+      let editableTextArea2 = Checkserver.buildElement("div", "", "blank-inputter input-2", {"contenteditable":true, "style": sentElementObj.position[2]}, "");
+      $(textArea).append(editableTextArea).append(editableTextArea2)
+      $(draggableInputContainer).append(inputContainerTitleBar).append(textArea);
     } else {
-      textArea.appendChild(editableTextArea);
-      draggableInputContainer.appendChild(textArea);
-      draggableInputContainer.appendChild(inputContainerTitleBar);
+      $(textArea).append(editableTextArea);
+      $(draggableInputContainer).append(textArea).append(inputContainerTitleBar);
     };
 
     Checkserver.insertElementToCheckArea(draggableInputContainer);
@@ -69,11 +65,9 @@ var Checkserver = ((domElementLibrary) => {
     let textArea = Checkserver.buildElement("div", "", `inputter${sentElementObj.specialClass}`, {"contenteditable":true}, sentElementObj.internalText);
 
     if (sentElementObj.id === "check-num") {
-      draggableInputContainer.appendChild(inputContainerTitleBar);
-      draggableInputContainer.appendChild(textArea);
+      $(draggableInputContainer).append(inputContainerTitleBar).append(textArea);
     } else  {
-      draggableInputContainer.appendChild(textArea);
-      draggableInputContainer.appendChild(inputContainerTitleBar);
+      $(draggableInputContainer).append(textArea).append(inputContainerTitleBar);
     };
 
     Checkserver.insertElementToCheckArea(draggableInputContainer);
@@ -86,14 +80,21 @@ var Checkserver = ((domElementLibrary) => {
     let inputContainerTitle = Checkserver.buildElement("p", "", "info-font handle print-remove", "", sentTitle);
     let infoIcon = Checkserver.buildElement("img", "", "window-icon settings print-remove", {"src":"img/settings.png", "alt":"Settings Button"}, "");
 
-    inputContainerTitleBar.appendChild(inputContainerTitle);
-    inputContainerTitleBar.appendChild(infoIcon);
+    $(inputContainerTitleBar).append(inputContainerTitle).append(infoIcon);
 
     return inputContainerTitleBar;
   },
 
-// Inserts an element to the top of the body child tree
-  domElementLibrary.insertElementToCheckArea = (sentElementBody) => $("#check-1").prepend(sentElementBody)
+// Inserts an element to the current master check div
+  domElementLibrary.insertElementToCheckArea = (sentElementBody) => $("#check-1").append(sentElementBody),
+
+// Makes multiple copies of the master "check-1" div depending on the number of checks in the template
+  domElementLibrary.copyChecksToDivs = (sentNumberOfChecks) => {
+
+    for (let i = 2; i <= sentNumberOfChecks; i++) {
+      $(`#check-${i}`).html($("#check-1").html());
+    };
+  }
 
   return domElementLibrary;
 
