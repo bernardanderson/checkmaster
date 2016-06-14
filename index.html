@@ -6,24 +6,38 @@
   <title>CheckServer Main Page</title>
 </head>
 
-<body>
+<body ng-app="demoApp">
 
-  <header id="nav-holder">
-    <div id="nav-content">This is some text</div>
-  </header>
-
-  <section id="content-area">
+  <section id="content-area" ng-controller="checkBuilderAJs">
     <div id="check-area">
+      <data-bank-address/>
       <div id="check-1"></div>
     </div>
   </section>
 
-  <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <script src="js/domElements.js"></script>
-  <script src="js/domElementLibrary.js"></script>
-  <script src="js/jqClickEvents.js"></script>
-  <script src="js/startup.js"></script>
+
+  <!-- Framework Libraries -->
+  <!-- <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script> -->
+  <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.js"></script>
+  <!-- <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script> -->
+
+  <!-- My Code -->
+  <!-- <script src="js/jqClickEvents.js"></script> -->
+  <script src="app/demoApp.js"></script>
+  <script src="app/factories/XHRFactory.js"></script>
+  <script src="app/controllers/checkBuilderAJs.js"></script>
+  <script src="app/directives/draggableElements.js"></script>
+  <script src="app/directives/domElementLibrary.js"></script>
+
+
+
+  <!-- <script src="js/domElements.js"></script> -->
+  <!-- <script src="js/domElementLibrary.js"></script> -->
+  <!-- <script src="js/startup.js"></script> -->
 </body>
 
 </html>

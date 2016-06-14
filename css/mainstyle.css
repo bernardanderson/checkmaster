@@ -32,7 +32,7 @@ shifted by the fix navbar at the top*/
   position: relative;
   width: 8.5in;
   height: 11in;
-  background: url(../img/blankchecks.jpg);
+  /*background: url(../img/blankchecks.jpg);*/
   background-size: 8.5in 11in;
 }
 
@@ -76,6 +76,7 @@ image at the native 8.5x11in width-height*/
 /*Styles the complete movable div input element*/
 .draggable {
   display: inline-block;
+  cursor: move;
   position: absolute;
   border-radius: 5px;
   width: auto;
@@ -85,6 +86,7 @@ image at the native 8.5x11in width-height*/
 .inputter {
   display: inline-block;
   min-width: 0.1in;
+  cursor: text;
   background-color: transparent;
   white-space: pre-wrap;
   -moz-user-select: none;
@@ -93,13 +95,14 @@ image at the native 8.5x11in width-height*/
 
 /*Turns off selecting of the title/info container*/
 .title-container {
+  display: inline-block;
   -moz-user-select: none;
   -webkit-user-select: none;
 }
 
 /* Styles the blank input areas for parts of the template that have a text label*/
 .blank-inputter {
-  position: absolute;
+  /*position: absolute;*/
   background-color: rgba(255,255,224, 0.6);
   white-space: nowrap;
   overflow: hidden;
@@ -151,7 +154,7 @@ image at the native 8.5x11in width-height*/
 }
 
 /*Styles hidden objects that have a temporary display from something like a mouseover */
-.show-view {
+.showview {
   visibility: visible;
 }
 
